@@ -1,6 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import logo from '~/logo.svg';
 
 const Hello = () => {
+  const { t } = useTranslation();
+
   return (
     <div
       style={{
@@ -23,6 +26,7 @@ const Hello = () => {
           gap: '14px',
         }}
       >
+        <li>{t('helloWorld')}</li>
         <li>🚀 Vite</li>
         <li>🔥 React</li>
         <li>📖 TypeScript</li>
