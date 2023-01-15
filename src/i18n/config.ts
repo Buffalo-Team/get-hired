@@ -5,6 +5,8 @@ import enProfile from './translations/en/profile';
 import plCommon from './translations/pl/common';
 import plProfile from './translations/pl/profile';
 
+export const namespaces = ['translation', 'profile'] as const;
+
 export const defaultNS = 'translation';
 
 export const resources = {
@@ -23,7 +25,7 @@ i18n.use(initReactI18next).init({
   resources,
   lng: 'en',
   fallbackLng: 'en',
-  ns: ['translation', 'profile'],
+  ns: namespaces,
 
   interpolation: {
     escapeValue: false,

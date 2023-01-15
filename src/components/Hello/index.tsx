@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import logo from '~/logo.svg';
+import Translate from '../Translate';
 
 const Hello = () => {
-  const { t, i18n } = useTranslation('profile');
+  const { i18n } = useTranslation('profile');
 
   return (
     <div
@@ -33,9 +34,15 @@ const Hello = () => {
         >
           Change language to PL
         </button>
-        <li>{t('accept', { ns: 'translation' })}</li>
-        <li>{t('add', { ns: 'translation' })}</li>
-        <li>{t('myProfile')}</li>
+        <li>
+          <Translate i18n='accept' />
+        </li>
+        <li>
+          <Translate i18n='add' />
+        </li>
+        <li>
+          <Translate i18n='myProfile' ns='profile' />
+        </li>
         <li>🚀 Vite</li>
         <li>🔥 React</li>
         <li>📖 TypeScript</li>
