@@ -10,15 +10,15 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
+      - run:
+          command: yarn lint
+          name: Run lint
+      - run:
+          command: yarn prettier
+          name: Run prettier
       #- run:
       #    command: yarn test
       #    name: Run tests
-      - run:
-          command: yarn build
-          name: Build app
-      - persist_to_workspace:
-          root: ~/project
-          paths: .
 
 workflows:
   build_and_test_workflow:
