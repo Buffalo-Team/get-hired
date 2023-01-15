@@ -1,3 +1,10 @@
+# Get Hired! App [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Buffalo-Team/get-hired/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Buffalo-Team/get-hired/tree/main)
+### Manage and track your applications to find your dream job! 
+
+___
+
+
+
 <h1 align='center'>Vite + React + TypeScript + Eslint + Prettier Template ⚡</h1>
 
 Create a new project with Vite, React JS, TypeScript, Eslint, Prettier in just 1 second and you don't need to setup anything.
