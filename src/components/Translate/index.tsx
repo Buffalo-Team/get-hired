@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { defaultNS, namespaces } from '~/i18n/config';
+import { TranslationKeys } from '~/i18n/translations/translations.types';
 
 interface IProps {
-  i18n: string; // TODO How to set proper type for this prop?
+  i18n: TranslationKeys; // TODO How to set proper type for this prop?
   ns?: typeof namespaces[number];
 }
 
