@@ -12,13 +12,12 @@ export const useThemeMode = (): {
 
   const themeContextValue = useMemo<ThemeContextProps>(
     () => ({
+      themeMode: mode,
       toggleTheme: () => {
-        setMode((prevMode: PaletteMode) =>
-          prevMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light,
-        );
+        setMode(mode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light);
       },
     }),
-    [],
+    [mode],
   );
 
   const theme = useMemo(() => createTheme(getTheme(mode)), [mode]);
