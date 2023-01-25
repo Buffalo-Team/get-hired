@@ -1,21 +1,13 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enCommon from './translations/en/common';
-import enProfile from './translations/en/profile';
-import plCommon from './translations/pl/common';
-import plProfile from './translations/pl/profile';
+import { translations as enTranslations } from './translations/en/translations';
+import { translations as plTranslations } from './translations/pl/translations';
 
 export const defaultNS = 'translation';
 
 export const resources = {
-  en: {
-    translation: enCommon,
-    profile: enProfile,
-  },
-  pl: {
-    translation: plCommon,
-    profile: plProfile,
-  },
+  en: enTranslations,
+  pl: plTranslations,
 } as const;
 
 i18n.use(initReactI18next).init({

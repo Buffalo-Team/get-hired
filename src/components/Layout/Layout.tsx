@@ -1,11 +1,13 @@
-import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
+import { Translate } from '~/i18n/Translate';
+import { commonTranslationKeys } from '~/i18n/translations/translationKeys';
 
 export const Layout = (): JSX.Element => {
-  const { t } = useTranslation();
   return (
     <div>
-      <h1>{t('welcomeText')}</h1>
+      <h1>
+        <Translate>{commonTranslationKeys.welcomeText}</Translate>
+      </h1>
       <Outlet />
     </div>
   );

@@ -1,4 +1,7 @@
 import { useTranslation } from 'react-i18next';
+import { Translate } from '~/i18n/Translate';
+import { createInterpolatedTranslationKey } from '~/i18n/translationHelper';
+import { commonTranslationKeys } from '~/i18n/translations/translationKeys';
 import logo from '~/logo.svg';
 
 const Hello = () => {
@@ -33,9 +36,30 @@ const Hello = () => {
         >
           Change language to PL
         </button>
-        <li>{t('accept', { ns: 'translation' })}</li>
-        <li>{t('add', { ns: 'translation' })}</li>
-        <li>{t('myProfile')}</li>
+        <button
+          onClick={() => {
+            i18n.changeLanguage('en');
+          }}
+        >
+          Change language to EN
+        </button>
+        <li>
+          {/* Standardowy przykład użycia translacji */}
+          <Translate>{commonTranslationKeys.helloWorld}</Translate>
+        </li>
+        <li>
+          {/* Przykład użycia interpolacji */}
+          <Translate>
+            {createInterpolatedTranslationKey(commonTranslationKeys.helloUser, {
+              user: 'Kuba',
+            })}
+          </Translate>
+        </li>
+        <li>
+          {/* Przykład użycia tekstu który nie musi być tłumaczony */}
+          <Translate>{{ text: 'Elo elo' }}</Translate>
+        </li>
+
         <li>🚀 Vite</li>
         <li>🔥 React</li>
         <li>📖 TypeScript</li>
