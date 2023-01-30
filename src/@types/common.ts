@@ -2,7 +2,7 @@ export enum Collection {
   Applications = 'applications',
 }
 
-export interface IModelBase {
+export interface ModelBase {
   id: number;
   createdAt: Date;
   updatedAt?: Date;
@@ -30,7 +30,7 @@ export enum ContractType {
   MandateContract = 'mandateContract',
 }
 
-export interface IApplication extends IModelBase {
+export interface Application extends ModelBase {
   companyName: string;
   roleName: string;
   applicationDate: Date;

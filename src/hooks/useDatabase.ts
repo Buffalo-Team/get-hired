@@ -1,29 +1,29 @@
-import { Collection, IApplication, IModelBase, Status } from "~/@types/common";
+import { Collection, Application, ModelBase, Status } from "~/@types/common";
 
-// taken from https://stackoverflow.com/a/63029283
 type DropFirst<T extends unknown[]> = T extends [any, ...infer U] ? U : never;
 
 const FREE_ID_KEY = 'free-id';
 
 const useDatabase = () => {
-  const get = <T extends IModelBase>(
+  const get = <T extends ModelBase>(
     collection: Collection,
     filterFunction?: (entry: T) => boolean,
   ): T[] => {
-    const entries: T[] = JSON.parse(localStorage.getItem(collection) || '[]');
+    const bareLocalStorageValue = localStorage.getItem(collection);
+    const entries: T[] = bareLocalStorageValue ? JSON.parse(bareLocalStorageValue) : [];
 
     return filterFunction ? entries.filter(filterFunction) : entries;
   };
 
-  const getById = <T extends IModelBase>(collection: Collection, id: number): T | null => {
+  const getById = <T extends ModelBase>(collection: Collection, id: number): T | null => {
     const entries = get<T>(collection);
 
-    return entries.find((entry) => entry.id === id) || null;
+    return entries.find((entry) => entry.id === id) ?? null;
   };
 
-  const insert = <T extends IModelBase>(
+  const insert = <T extends ModelBase>(
     collection: Collection,
-    payload: Omit<T, keyof IModelBase>,
+    payload: Omit<T, keyof ModelBase>,
   ): Status => {
     const freeID = Number(localStorage.getItem(FREE_ID_KEY) || 1);
     const payloadToInsert = { ...payload, id: freeID, createdAt: new Date() } as T;
@@ -42,7 +42,7 @@ const useDatabase = () => {
     return Status.Success;
   };
 
-  const removeById = <T extends IModelBase>(collection: Collection, id: number): Status => {
+  const removeById = <T extends ModelBase>(collection: Collection, id: number): Status => {
     const entries = get<T>(collection);
     const newEntries = entries.filter((entry) => entry.id !== id);
 
@@ -51,7 +51,7 @@ const useDatabase = () => {
     return Status.Success;
   };
 
-  const updateById = <T extends IModelBase>(collection: Collection, id: number, payload: Partial<Omit<T, keyof IModelBase>>): T => {
+  const updateById = <T extends ModelBase>(collection: Collection, id: number, payload: Partial<Omit<T, keyof ModelBase>>): T => {
     const entries = get<T>(collection);
     const index = entries.findIndex((entry) => entry.id === id);
     entries[index] = { ...entries[index], ...payload, updatedAt: new Date() };
@@ -64,16 +64,16 @@ const useDatabase = () => {
   return {
     [Collection.Applications]: {
       get: (...args: DropFirst<Parameters<typeof get>>) =>
-        get<IApplication>(Collection.Applications, ...args),
+        get<Application>(Collection.Applications, ...args),
       getById: (...args: DropFirst<Parameters<typeof getById>>) =>
-        getById<IApplication>(Collection.Applications, ...args),
+        getById<Application>(Collection.Applications, ...args),
       // eslint-disable-next-line prettier/prettier
-      insert: (...args: DropFirst<Parameters<typeof insert<IApplication>>>) =>
-        insert<IApplication>(Collection.Applications, ...args),
+      insert: (...args: DropFirst<Parameters<typeof insert<Application>>>) =>
+        insert<Application>(Collection.Applications, ...args),
       removeById: (...args: DropFirst<Parameters<typeof removeById>>) =>
-        removeById<IApplication>(Collection.Applications, ...args),
-      updateById: (...args: DropFirst<Parameters<typeof updateById<IApplication>>>) =>
-        updateById<IApplication>(Collection.Applications, ...args),
+        removeById<Application>(Collection.Applications, ...args),
+      updateById: (...args: DropFirst<Parameters<typeof updateById<Application>>>) =>
+        updateById<Application>(Collection.Applications, ...args),
     },
   };
 };
