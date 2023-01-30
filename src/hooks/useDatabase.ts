@@ -63,14 +63,14 @@ const useDatabase = () => {
 
   return {
     [Collection.Applications]: {
-      get: (...args: DropFirst<Parameters<typeof get>>) =>
-        get<Application>(Collection.Applications, ...args),
-      getById: (...args: DropFirst<Parameters<typeof getById>>) =>
-        getById<Application>(Collection.Applications, ...args),
       // eslint-disable-next-line prettier/prettier
+      get: (...args: DropFirst<Parameters<typeof get<Application>>>) =>
+        get<Application>(Collection.Applications, ...args),
+      getById: (...args: DropFirst<Parameters<typeof getById<Application>>>) =>
+        getById<Application>(Collection.Applications, ...args),
       insert: (...args: DropFirst<Parameters<typeof insert<Application>>>) =>
         insert<Application>(Collection.Applications, ...args),
-      removeById: (...args: DropFirst<Parameters<typeof removeById>>) =>
+      removeById: (...args: DropFirst<Parameters<typeof removeById<Application>>>) =>
         removeById<Application>(Collection.Applications, ...args),
       updateById: (...args: DropFirst<Parameters<typeof updateById<Application>>>) =>
         updateById<Application>(Collection.Applications, ...args),
