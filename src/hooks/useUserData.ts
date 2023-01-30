@@ -1,13 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { IUserState } from '~/@types/redux';
-import { RootState } from '~/providers/redux/store';
-import { clearUser, updateUser } from '~/providers/redux/userSlice';
+import { clearUser, UserState, updateUser, userSelector } from '~/providers/redux/userSlice';
 
 const useUserData = () => {
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector(userSelector);
   const dispatch = useDispatch();
 
-  const setUserData = (data: IUserState) => {
+  const setUserData = (data: UserState) => {
     dispatch(updateUser(data));
   };
 
