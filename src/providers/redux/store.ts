@@ -7,9 +7,6 @@ const store = configureStore({
   },
 });
 
-export interface ActionPayload<T> {
-  payload: T;
-}
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 

@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ActionPayload, RootState } from './store';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './store';
 
 export interface UserState {
   id: number | null;
@@ -19,7 +19,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    updateUser: (state, action: ActionPayload<UserState>) => ({
+    updateUser: (state, action: PayloadAction<UserState>) => ({
       ...state,
       ...action.payload,
     }),
