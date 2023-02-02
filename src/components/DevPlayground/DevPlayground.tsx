@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '~/providers/theme/ThemeContext';
 import useUserData from '~/hooks/useUserData';
+import ApplicationTile from '../ApplicationTile';
 
 export const DevPlayground = (): JSX.Element => {
   const { toggleTheme, themeMode } = useContext(ThemeContext);
@@ -20,6 +21,19 @@ export const DevPlayground = (): JSX.Element => {
   return (
     <div>
       <h1>{t('devPlayground')}</h1>
+      <div style={{ padding: 20 }}>
+        <ApplicationTile
+          companyName='Super Company'
+          roleName='Frontend Developer'
+          status='sent'
+          salary={{
+            from: 10,
+            to: 20,
+          }}
+          linkToOffer={'www.google.com'}
+          createdAt={new Date()}
+        />
+      </div>
       <div>
         <Switch onChange={toggleTheme} />
         <span>{themeMode}</span>
