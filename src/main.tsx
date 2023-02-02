@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import './i18n/config';
 import { ThemeProvider } from './providers/theme/ThemeProvider';
+import './theme.css.ts';
 
 import './index.css';
 import store from './providers/redux/store';
