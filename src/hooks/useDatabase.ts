@@ -1,4 +1,4 @@
-import { Collection, Application, ModelBase, Status } from "~/@types/common";
+import { Collection, Application, ModelBase, Status } from '~/@types/common';
 
 type DropFirst<T extends unknown[]> = T extends [any, ...infer U] ? U : never;
 
@@ -51,7 +51,11 @@ const useDatabase = () => {
     return Status.Success;
   };
 
-  const updateById = <T extends ModelBase>(collection: Collection, id: number, payload: Partial<Omit<T, keyof ModelBase>>): T => {
+  const updateById = <T extends ModelBase>(
+    collection: Collection,
+    id: number,
+    payload: Partial<Omit<T, keyof ModelBase>>,
+  ): T => {
     const entries = get<T>(collection);
     const index = entries.findIndex((entry) => entry.id === id);
     entries[index] = { ...entries[index], ...payload, updatedAt: new Date() };
@@ -63,7 +67,6 @@ const useDatabase = () => {
 
   return {
     [Collection.Applications]: {
-      // eslint-disable-next-line prettier/prettier
       get: (...args: DropFirst<Parameters<typeof get<Application>>>) =>
         get<Application>(Collection.Applications, ...args),
       getById: (...args: DropFirst<Parameters<typeof getById<Application>>>) =>
