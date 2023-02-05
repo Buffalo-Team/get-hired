@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '~/theme.css';
+import theme from '~/theme/theme.css';
 
 export default {
   root: style({
@@ -13,7 +13,7 @@ export default {
     width: 3,
     borderTopLeftRadius: 4,
     borderBottomLeftRadius: 4,
-    backgroundColor: vars.palette.status.hired,
+    backgroundColor: theme.palette.status.hired,
   }),
   main: style({
     flex: 1,
@@ -41,27 +41,27 @@ export default {
     alignItems: 'center',
   }),
   link: style({
-    color: vars.palette.neutral.main,
+    color: theme.palette.neutral.main,
   }),
   salary: style({
-    color: vars.palette.secondary.main,
+    color: theme.palette.secondary.main,
   }),
   sent: style({
-    backgroundColor: vars.palette.status.sent,
+    backgroundColor: theme.palette.status.sent,
   }),
   inProgress: style({
-    backgroundColor: vars.palette.status.inProgress,
+    backgroundColor: theme.palette.status.inProgress,
   }),
   rejected: style({
-    backgroundColor: vars.palette.status.rejected,
+    backgroundColor: theme.palette.status.rejected,
   }),
   accepted: style({
-    backgroundColor: vars.palette.status.accepted,
+    backgroundColor: theme.palette.status.accepted,
   }),
   hired: style({
-    backgroundColor: vars.palette.status.hired,
+    backgroundColor: theme.palette.status.hired,
   }),
   archived: style({
-    backgroundColor: vars.palette.status.archived,
+    backgroundColor: theme.palette.status.archived,
   }),
 };

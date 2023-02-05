@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '~/theme.css';
+import theme from '~/theme/theme.css';
 
 export default {
   text: style({
-    color: vars.palette.neutral.dark,
+    color: theme.palette.neutral.dark,
   }),
   small: style({
     fontSize: 12,

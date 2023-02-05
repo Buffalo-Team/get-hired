@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 
 import App from './App';
 import './i18n/config';
-import { ThemeProvider } from './providers/theme/ThemeProvider';
-import './theme.css.ts';
+import './theme/theme.css.ts';
+import './theme/global.css';
 
 import './index.css';
 import store from './providers/redux/store';
@@ -14,11 +14,9 @@ import store from './providers/redux/store';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
 );

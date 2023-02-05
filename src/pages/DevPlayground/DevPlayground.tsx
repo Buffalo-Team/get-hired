@@ -1,12 +1,11 @@
 import { Switch } from '@mui/material';
-import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ThemeContext } from '~/providers/theme/ThemeContext';
 import useUserData from '~/hooks/useUserData';
-import ApplicationTile from '../ApplicationTile';
+import ApplicationTile from '../../components/ApplicationTile';
+import useTheme from '~/hooks/useTheme';
 
 export const DevPlayground = (): JSX.Element => {
-  const { toggleTheme, themeMode } = useContext(ThemeContext);
+  const { toggleTheme, mode } = useTheme();
   const { t, i18n } = useTranslation();
   const { setUserData, clearUserData, user } = useUserData();
 
@@ -19,7 +18,7 @@ export const DevPlayground = (): JSX.Element => {
   };
 
   return (
-    <div>
+    <div style={{ background: '#ededed' }}>
       <h1>{t('devPlayground')}</h1>
       <div style={{ padding: 20 }}>
         <ApplicationTile
@@ -36,7 +35,7 @@ export const DevPlayground = (): JSX.Element => {
       </div>
       <div>
         <Switch onChange={toggleTheme} />
-        <span>{themeMode}</span>
+        <span>{mode}</span>
       </div>
       <div>
         <Switch onChange={handleChangeLanguage} />
