@@ -29,8 +29,19 @@ export const DevPlayground = (): JSX.Element => {
             from: 10,
             to: 20,
           }}
-          linkToOffer={'www.google.com'}
-          createdAt={new Date()}
+          linkToOffer=''
+          createdAt={new Date('2023-02-05T20:02:28.228Z')}
+        />
+        <ApplicationTile
+          companyName='Other Company'
+          roleName='Backend Developer'
+          status='accepted'
+          salary={{
+            from: 5,
+            to: 6,
+          }}
+          linkToOffer=''
+          createdAt={new Date('2023-01-05T20:02:28.228Z')}
         />
       </div>
       <div>
