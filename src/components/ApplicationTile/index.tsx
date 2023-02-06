@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import Text from '../Text';
 import styles from './styles.css';
+import getFormattedTimeDifference from '~/utils/getFormattedTimeDifference';
 
 interface Props {
   companyName: string;
@@ -13,6 +14,7 @@ interface Props {
   };
   linkToOffer: string;
   createdAt: Date;
+  className?: string;
 }
 
 const ApplicationTile = ({
@@ -22,11 +24,12 @@ const ApplicationTile = ({
   salary,
   linkToOffer,
   createdAt,
+  className,
 }: Props) => {
   const { t } = useTranslation('applications');
 
   return (
-    <div className={styles.root}>
+    <div className={classNames(styles.root, className)}>
       <aside className={classNames(styles.aside, styles[status])} />
       <main className={styles.main}>
         <div className={styles.row}>
@@ -49,8 +52,7 @@ const ApplicationTile = ({
               {t('linkToOffer')}
             </Text>
           </a>
-          {/* TODO calculate (now - createdAt) */}
-          <Text variant='small'>2m</Text>
+          <Text variant='small'>{getFormattedTimeDifference(t, createdAt)}</Text>
         </div>
       </main>
     </div>

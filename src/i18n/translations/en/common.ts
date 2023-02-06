@@ -8,5 +8,6 @@ export default {
   devPlayground: 'Dev Playground',
   setMockUser: 'Set mock user',
   clearUserData: 'Clear user data',
-  // translations above are just an example - can be deleted in the future
+  numberOfDays_one: '{{count}} day',
+  numberOfDays_other: '{{count}} days',
 } as const;

@@ -8,5 +8,6 @@ export default {
   devPlayground: 'Dev Plac Zabaw',
   setMockUser: 'Ustaw mockowego użytkownika',
   clearUserData: 'Wyczyść dane użytkownika',
-  // translations above are just an example - can be deleted in the future
+  numberOfDays_one: '{{count}} dzień',
+  numberOfDays_other: '{{count}} dni',
 } as const;
