@@ -4,12 +4,14 @@ import { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  variant?: 'small' | 'normal' | 'medium' | 'large';
+  variant?: keyof typeof styles.variant;
   className?: string;
 }
 
 const Text = ({ variant = 'normal', className, children }: Props) => {
-  return <div className={classNames(styles.text, styles[variant], className)}>{children}</div>;
+  return (
+    <div className={classNames(styles.text, styles.variant[variant], className)}>{children}</div>
+  );
 };
 
 export default Text;

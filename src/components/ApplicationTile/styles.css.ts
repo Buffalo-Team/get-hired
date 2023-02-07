@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import theme from '~/theme/theme.css';
+import theme from '~/theme';
 
 export default {
   root: style({
@@ -30,19 +30,7 @@ export default {
     justifyContent: 'space-between',
     alignItems: 'center',
   }),
-  statusDot: style({
-    width: 6,
-    height: 6,
-    borderRadius: '50%',
-  }),
-  statusWrapper: style({
-    display: 'flex',
-    columnGap: 4,
-    alignItems: 'center',
-  }),
-  link: style({
-    color: theme.palette.neutral.main,
-  }),
+
   salary: style({
     color: theme.palette.secondary.main,
   }),

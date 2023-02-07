@@ -3,11 +3,14 @@ import classNames from 'classnames';
 import Text from '../Text';
 import styles from './styles.css';
 import getFormattedTimeDifference from '~/utils/getFormattedTimeDifference';
+import { ApplicationStatus as ApplicationStatusEnum } from '~/@types/common';
+import ApplicationStatus from '~/components/ApplicationStatus';
+import Link from '~/components/Link';
 
 interface Props {
   companyName: string;
   roleName: string;
-  status: 'sent' | 'inProgress' | 'rejected' | 'accepted' | 'hired' | 'archived';
+  status: ApplicationStatusEnum;
   salary: {
     from: number;
     to: number;
@@ -35,10 +38,7 @@ const ApplicationTile = ({
         <div className={styles.row}>
           <Text variant='medium'>{companyName}</Text>
 
-          <span className={styles.statusWrapper}>
-            <div className={classNames(styles.statusDot, styles[status])} />
-            <div>{t(`status.${status}`)}</div>
-          </span>
+          <ApplicationStatus status={status} />
         </div>
         <div className={styles.row}>
           <Text>{roleName}</Text>
@@ -47,11 +47,7 @@ const ApplicationTile = ({
           </Text>
         </div>
         <div className={styles.row}>
-          <a href={linkToOffer}>
-            <Text variant='small' className={styles.link}>
-              {t('linkToOffer')}
-            </Text>
-          </a>
+          <Link href={linkToOffer} />
           <Text variant='small'>{getFormattedTimeDifference(t, createdAt)}</Text>
         </div>
       </main>
