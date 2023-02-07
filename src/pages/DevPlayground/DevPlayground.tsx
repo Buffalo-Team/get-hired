@@ -3,13 +3,11 @@ import { useTranslation } from 'react-i18next';
 import useUserData from '~/hooks/useUserData';
 import ApplicationTile from '../../components/ApplicationTile';
 import useTheme from '~/hooks/useTheme';
-import useDatabase from '~/hooks/useDatabase';
 
 export const DevPlayground = (): JSX.Element => {
   const { toggleTheme, mode } = useTheme();
   const { t, i18n } = useTranslation();
   const { setUserData, clearUserData, user } = useUserData();
-  const { applications } = useDatabase();
 
   const handleChangeLanguage = () => {
     if (i18n.language === 'pl') {
@@ -18,7 +16,7 @@ export const DevPlayground = (): JSX.Element => {
       i18n.changeLanguage('pl');
     }
   };
-  console.log(applications.get());
+
   return (
     <div style={{ background: '#ededed' }}>
       <h1>{t('devPlayground')}</h1>
