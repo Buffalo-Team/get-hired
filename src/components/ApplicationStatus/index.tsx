@@ -1,14 +1,14 @@
-import { useTranslation } from 'react-i18next';
 import { ApplicationStatus as ApplicationStatusEnum } from '~/@types/common';
 import styles from './styles.css';
 import theme from '~/theme';
+import useI18n from '~/hooks/useI18n';
 
 interface Props {
   status: ApplicationStatusEnum;
 }
 
 const ApplicationStatus = ({ status }: Props) => {
-  const { t } = useTranslation('applications');
+  const { t } = useI18n('applications');
 
   return (
     <span className={styles.root}>

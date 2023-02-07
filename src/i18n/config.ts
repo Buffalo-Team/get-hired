@@ -5,7 +5,11 @@ import enApplications from './translations/en/applications';
 import plCommon from './translations/pl/common';
 import plApplications from './translations/pl/applications';
 
-export const defaultNS = 'translation';
+export type Namespaces = 'translation' | 'applications';
+
+export const defaultNS: Namespaces = 'translation';
+
+const namespaces: Namespaces[] = ['translation', 'applications'];
 
 export const resources = {
   en: {
@@ -23,7 +27,7 @@ i18n.use(initReactI18next).init({
   resources,
   lng: 'en',
   fallbackLng: 'en',
-  ns: ['translation', 'applications'],
+  ns: namespaces,
   interpolation: {
     escapeValue: false,
   },

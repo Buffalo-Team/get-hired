@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import Text from '~/components/Text';
+import useI18n from '~/hooks/useI18n';
 import styles from './styles.css';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Link = ({ href }: Props) => {
-  const { t } = useTranslation('applications');
+  const { t } = useI18n('applications');
 
   return (
     <a href={href}>
