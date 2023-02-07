@@ -1,9 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import logo from '~/logo.svg';
 
 const Hello = () => {
-  const { t, i18n } = useTranslation('profile');
-
   return (
     <div
       style={{
@@ -26,16 +23,6 @@ const Hello = () => {
           gap: '14px',
         }}
       >
-        <button
-          onClick={() => {
-            i18n.changeLanguage('pl');
-          }}
-        >
-          Change language to PL
-        </button>
-        <li>{t('accept', { ns: 'translation' })}</li>
-        <li>{t('add', { ns: 'translation' })}</li>
-        <li>{t('myProfile')}</li>
         <li>🚀 Vite</li>
         <li>🔥 React</li>
         <li>📖 TypeScript</li>
