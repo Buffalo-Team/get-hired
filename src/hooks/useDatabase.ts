@@ -65,6 +65,13 @@ const useDatabase = () => {
     return entries[index];
   };
 
+  const dropDatabase = () => {
+    localStorage.removeItem(Collection.Applications);
+    localStorage.removeItem(FREE_ID_KEY);
+
+    return Status.Success;
+  };
+
   return {
     [Collection.Applications]: {
       get: (...args: DropFirst<Parameters<typeof get<Application>>>) =>
@@ -78,6 +85,7 @@ const useDatabase = () => {
       updateById: (...args: DropFirst<Parameters<typeof updateById<Application>>>) =>
         updateById<Application>(Collection.Applications, ...args),
     },
+    dropDatabase,
   };
 };
 
