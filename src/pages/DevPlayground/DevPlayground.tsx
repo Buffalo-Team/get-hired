@@ -1,12 +1,13 @@
 import { Switch } from '@mui/material';
-import { useTranslation } from 'react-i18next';
 import useUserData from '~/hooks/useUserData';
 import ApplicationTile from '../../components/ApplicationTile';
 import useTheme from '~/hooks/useTheme';
+import useI18n from '~/hooks/useI18n';
+import { ApplicationStatus } from '~/@types/common';
 
 export const DevPlayground = (): JSX.Element => {
   const { toggleTheme, mode } = useTheme();
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useI18n();
   const { setUserData, clearUserData, user } = useUserData();
 
   const handleChangeLanguage = () => {
@@ -24,7 +25,7 @@ export const DevPlayground = (): JSX.Element => {
         <ApplicationTile
           companyName='Super Company'
           roleName='Frontend Developer'
-          status='sent'
+          status={ApplicationStatus.Sent}
           salary={{
             from: 10,
             to: 20,
@@ -35,7 +36,7 @@ export const DevPlayground = (): JSX.Element => {
         <ApplicationTile
           companyName='Other Company'
           roleName='Backend Developer'
-          status='accepted'
+          status={ApplicationStatus.Hired}
           salary={{
             from: 5,
             to: 6,

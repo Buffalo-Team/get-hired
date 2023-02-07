@@ -6,7 +6,7 @@ import { DevPlayground } from './pages/DevPlayground/DevPlayground';
 import { Layout } from './templates/Layout';
 import ThemeWrapper from './templates/ThemeWrapper';
 
-const App = () => {
+const App = (): JSX.Element => {
   const { generateDatabase } = useGenerator();
 
   useEffectOnce(() => {
