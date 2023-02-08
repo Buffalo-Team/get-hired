@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import theme from '~/theme';
 
-export default {
+export const styles = {
   text: style({
     color: theme.palette.neutral.dark,
   }),

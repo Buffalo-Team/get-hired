@@ -1,4 +1,5 @@
 import { Collection, Application, ModelBase, Status } from '~/@types/common';
+import { mapEntry } from './utils';
 
 type DropFirst<T extends unknown[]> = T extends [any, ...infer U] ? U : never;
 
@@ -12,7 +13,9 @@ const useDatabase = () => {
     const bareLocalStorageValue = localStorage.getItem(collection);
     const entries: T[] = bareLocalStorageValue ? JSON.parse(bareLocalStorageValue) : [];
 
-    return filterFunction ? entries.filter(filterFunction) : entries;
+    const mappedEntries = entries.map((entry) => mapEntry<T>(collection, entry));
+
+    return filterFunction ? mappedEntries.filter(filterFunction) : mappedEntries;
   };
 
   const getById = <T extends ModelBase>(collection: Collection, id: number): T | null => {
@@ -62,7 +65,9 @@ const useDatabase = () => {
 
     localStorage.setItem(collection, JSON.stringify(entries));
 
-    return entries[index];
+    const mappedEntry = mapEntry<T>(collection, entries[index]);
+
+    return mappedEntry;
   };
 
   const dropDatabase = () => {

@@ -11,6 +11,7 @@ export const themeContract = createThemeContract({
     neutral: {
       dark: null,
       main: null,
+      light: null,
     },
     status: {
       sent: null,
@@ -34,6 +35,7 @@ export const lightTheme = createTheme(themeContract, {
     neutral: {
       dark: '#303030',
       main: '#959595',
+      light: '#EBEBEB',
     },
     status: {
       sent: '#9FB900',
@@ -60,6 +62,7 @@ export const darkTheme = createTheme(themeContract, {
     neutral: {
       dark: MOCK_COLOR,
       main: MOCK_COLOR,
+      light: MOCK_COLOR,
     },
     status: {
       sent: '#9FB900',

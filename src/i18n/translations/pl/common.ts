@@ -10,4 +10,5 @@ export default {
   clearUserData: 'Wyczyść dane użytkownika',
   numberOfDays_one: '{{count}} dzień',
   numberOfDays_other: '{{count}} dni',
+  loading: 'Ładowanie',
 } as const;

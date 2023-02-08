@@ -1,4 +1,4 @@
-import styles from './styles.css';
+import { styles } from './styles.css';
 import classNames from 'classnames';
 import { ReactNode } from 'react';
 

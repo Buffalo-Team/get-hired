@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import Text from '../Text';
-import styles from './styles.css';
+import { styles } from './styles.css';
 import getFormattedTimeDifference from '~/utils/getFormattedTimeDifference';
 import { ApplicationStatus as ApplicationStatusEnum } from '~/@types/common';
 import ApplicationStatus from '~/components/ApplicationStatus';

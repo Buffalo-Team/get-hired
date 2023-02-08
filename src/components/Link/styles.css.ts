@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import theme from '~/theme';
 
-export default {
+export const styles = {
   link: style({
     color: theme.palette.neutral.main,
   }),

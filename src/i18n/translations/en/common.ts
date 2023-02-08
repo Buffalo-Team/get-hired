@@ -10,4 +10,5 @@ export default {
   clearUserData: 'Clear user data',
   numberOfDays_one: '{{count}} day',
   numberOfDays_other: '{{count}} days',
+  loading: 'Loading',
 } as const;

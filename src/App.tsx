@@ -1,10 +1,13 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { Route, Routes } from 'react-router-dom';
 import { useEffectOnce } from 'react-use';
-import Hello from '~/components/Hello';
 import useGenerator from './hooks/useGenerator';
+import ApplicationsList from './pages/Applications/List';
 import { DevPlayground } from './pages/DevPlayground/DevPlayground';
 import { Layout } from './templates/Layout';
 import ThemeWrapper from './templates/ThemeWrapper';
+
+const queryClient = new QueryClient();
 
 const App = (): JSX.Element => {
   const { generateDatabase } = useGenerator();
@@ -20,14 +23,16 @@ const App = (): JSX.Element => {
   });
 
   return (
-    <ThemeWrapper>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Hello />} />
-          <Route path='dev' element={<DevPlayground />} />
-        </Route>
-      </Routes>
-    </ThemeWrapper>
+    <QueryClientProvider client={queryClient}>
+      <ThemeWrapper>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<ApplicationsList />} />
+            <Route path='dev' element={<DevPlayground />} />
+          </Route>
+        </Routes>
+      </ThemeWrapper>
+    </QueryClientProvider>
   );
 };
 
