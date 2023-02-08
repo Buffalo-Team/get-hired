@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly VITE_GENERATE_ON_START: string;
+  readonly VITE_GENERATE_ENABLED: string;
 }
 
 interface ImportMeta {
