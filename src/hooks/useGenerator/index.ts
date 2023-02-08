@@ -56,6 +56,7 @@ const useGenerator = () => {
   };
 
   return {
+    isGenerated,
     generateDatabase,
   };
 };

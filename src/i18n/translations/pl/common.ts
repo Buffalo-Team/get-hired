@@ -11,4 +11,5 @@ export default {
   numberOfDays_one: '{{count}} dzień',
   numberOfDays_other: '{{count}} dni',
   loading: 'Ładowanie',
+  databaseGenerated: 'Baza danych została wygenerowana!',
 } as const;
