@@ -1,12 +1,13 @@
+import { DBApplication, DBModelBase } from './database';
+
 export enum Collection {
   Applications = 'applications',
 }
 
-export interface ModelBase {
-  id: number;
+export type ModelBase = Omit<DBModelBase, 'createdAt' | 'updatedAt'> & {
   createdAt: Date;
   updatedAt?: Date;
-}
+};
 
 export enum ApplicationStatus {
   Sent = 'sent',
@@ -30,19 +31,10 @@ export enum ContractType {
   MandateContract = 'mandateContract',
 }
 
-export interface Application extends ModelBase {
-  companyName: string;
-  roleName: string;
-  applicationDate: Date;
-  status: ApplicationStatus;
-  linkToOffer: string;
-  salaryRange: {
-    from: number;
-    to: number;
-    currency: Currency;
-    contractType: ContractType;
+export type Application = ModelBase &
+  Omit<DBApplication, 'applicationDate'> & {
+    applicationDate: Date;
   };
-}
 
 export enum Status {
   Success = 'success',
