@@ -7,16 +7,14 @@ const Generator = (): JSX.Element => {
   const { generateDatabase, isGenerated } = useGenerator();
 
   useEffectOnce(() => {
-    if (import.meta.env.VITE_GENERATE_ENABLED === 'true') {
-      generateDatabase({
-        quantities: {
-          applications: 30,
-        },
-      });
-    }
+    generateDatabase({
+      quantities: {
+        applications: 30,
+      },
+    });
   });
 
-  return <div>{isGenerated ? t('databaseGenerated') : <Loader />}</div>;
+  return <>{isGenerated ? t('databaseGenerated') : <Loader />}</>;
 };
 
 export default Generator;
