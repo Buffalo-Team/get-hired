@@ -7,35 +7,35 @@ type DropFirst<T extends unknown[]> = T extends [any, ...infer U] ? U : never;
 const FREE_ID_KEY = 'free-id';
 
 const useDatabase = () => {
-  const get = <Model extends ModelBase, DBModel extends DBModelBase>(
+  const get = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
-    filterFunction?: (entry: Model) => boolean,
-  ): Model[] => {
+    filterFunction?: (entry: MODEL) => boolean,
+  ): MODEL[] => {
     const bareLocalStorageValue = localStorage.getItem(collection);
-    const entries: DBModel[] = bareLocalStorageValue ? JSON.parse(bareLocalStorageValue) : [];
+    const entries: DB_MODEL[] = bareLocalStorageValue ? JSON.parse(bareLocalStorageValue) : [];
 
-    const mappedEntries = entries.map((entry) => mapEntry<Model, DBModel>(collection, entry));
+    const mappedEntries = entries.map((entry) => mapEntry<MODEL, DB_MODEL>(collection, entry));
 
     return filterFunction ? mappedEntries.filter(filterFunction) : mappedEntries;
   };
 
-  const getById = <Model extends ModelBase, DBModel extends DBModelBase>(
+  const getById = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
     id: number,
-  ): Model | null => {
-    const entries = get<Model, DBModel>(collection);
+  ): MODEL | null => {
+    const entries = get<MODEL, DB_MODEL>(collection);
 
     return entries.find((entry) => entry.id === id) ?? null;
   };
 
-  const insert = <Model extends ModelBase, DBModel extends DBModelBase>(
+  const insert = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
-    payload: Omit<Model, keyof ModelBase>,
+    payload: Omit<MODEL, keyof ModelBase>,
   ): Status => {
     const freeID = Number(localStorage.getItem(FREE_ID_KEY) || 1);
-    const payloadToInsert = { ...payload, id: freeID, createdAt: new Date() } as Model;
+    const payloadToInsert = { ...payload, id: freeID, createdAt: new Date() } as MODEL;
 
-    const entries = get<Model, DBModel>(collection);
+    const entries = get<MODEL, DB_MODEL>(collection);
 
     if (entries.length === 0) {
       localStorage.setItem(collection, JSON.stringify([payloadToInsert]));
@@ -49,11 +49,11 @@ const useDatabase = () => {
     return Status.Success;
   };
 
-  const removeById = <Model extends ModelBase, DBModel extends DBModelBase>(
+  const removeById = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
     id: number,
   ): Status => {
-    const entries = get<Model, DBModel>(collection);
+    const entries = get<MODEL, DB_MODEL>(collection);
     const newEntries = entries.filter((entry) => entry.id !== id);
 
     localStorage.setItem(collection, JSON.stringify(newEntries));
@@ -61,12 +61,12 @@ const useDatabase = () => {
     return Status.Success;
   };
 
-  const updateById = <Model extends ModelBase, DBModel extends DBModelBase>(
+  const updateById = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
     id: number,
-    payload: Partial<Omit<Model, keyof ModelBase>>,
-  ): Model => {
-    const entries = get<Model, DBModel>(collection);
+    payload: Partial<Omit<MODEL, keyof ModelBase>>,
+  ): MODEL => {
+    const entries = get<MODEL, DB_MODEL>(collection);
     const index = entries.findIndex((entry) => entry.id === id);
     entries[index] = { ...entries[index], ...payload, updatedAt: new Date() };
 

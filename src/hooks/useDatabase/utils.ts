@@ -1,15 +1,15 @@
 import { Application, Collection, ModelBase } from '~/@types/common';
 import { DBModelBase } from '~/@types/database';
 
-export const mapEntry = <Model extends ModelBase, DBModel extends DBModelBase>(
+export const mapEntry = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
   collection: Collection,
-  entry: DBModel,
-): Model => {
+  entry: DB_MODEL,
+): MODEL => {
   const mappedBase = {
     ...entry,
     createdAt: new Date(entry.createdAt),
     updatedAt: entry.updatedAt ? new Date(entry.updatedAt) : entry.updatedAt,
-  } as Model;
+  } as MODEL;
 
   if (collection === Collection.Applications) {
     const application = mappedBase as unknown as Application;
@@ -17,7 +17,7 @@ export const mapEntry = <Model extends ModelBase, DBModel extends DBModelBase>(
     return {
       ...application,
       applicationDate: new Date(application.applicationDate),
-    } as unknown as Model;
+    } as unknown as MODEL;
   } else {
     return mappedBase;
   }
