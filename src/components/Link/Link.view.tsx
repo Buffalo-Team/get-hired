@@ -1,6 +1,6 @@
 import Text from '~/components/Text';
 import useI18n from '~/hooks/useI18n';
-import { styles } from './styles.css';
+import { styles } from './Link.styles.css';
 
 interface Props {
   href: string;

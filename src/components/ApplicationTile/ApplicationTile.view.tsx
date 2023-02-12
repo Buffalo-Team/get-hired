@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import Text from '../Text';
-import { styles } from './styles.css';
+import { styles } from './ApplicationTile.styles.css';
 import getFormattedTimeDifference from '~/utils/getFormattedTimeDifference';
 import { ApplicationStatus as ApplicationStatusEnum } from '~/@types/common';
 import ApplicationStatus from '~/components/ApplicationStatus';
-import Link from '~/components/Link';
+import Link from '~/components/Link/Link.view';
 import useI18n from '~/hooks/useI18n';
 
 interface Props {

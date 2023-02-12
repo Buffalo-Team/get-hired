@@ -5,7 +5,7 @@ import useTheme from '~/hooks/useTheme';
 import useI18n from '~/hooks/useI18n';
 import { ApplicationStatus } from '~/@types/common';
 
-export const DevPlayground = (): JSX.Element => {
+const DevPlaygroundView = (): JSX.Element => {
   const { toggleTheme, mode } = useTheme();
   const { t, i18n } = useI18n();
   const { setUserData, clearUserData, user } = useUserData();
@@ -68,3 +68,5 @@ export const DevPlayground = (): JSX.Element => {
     </div>
   );
 };
+
+export default DevPlaygroundView;

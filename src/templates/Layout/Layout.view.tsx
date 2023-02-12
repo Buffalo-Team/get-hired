@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import useI18n from '~/hooks/useI18n';
-import { styles } from './styles.css';
+import { styles } from './Layout.styles.css';
 
-export const Layout = (): JSX.Element => {
+const LayoutView = (): JSX.Element => {
   const { t } = useI18n();
 
   return (
@@ -14,3 +14,5 @@ export const Layout = (): JSX.Element => {
     </div>
   );
 };
+
+export default LayoutView;

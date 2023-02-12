@@ -3,7 +3,7 @@ import { useEffectOnce } from 'react-use';
 import Loader from '~/components/Loader';
 import useGenerator from '~/hooks/useGenerator';
 
-const Generator = (): JSX.Element => {
+const GeneratorView = (): JSX.Element => {
   const { generateDatabase, isGenerated } = useGenerator();
 
   useEffectOnce(() => {
@@ -17,4 +17,4 @@ const Generator = (): JSX.Element => {
   return <>{isGenerated ? t('databaseGenerated') : <Loader />}</>;
 };
 
-export default Generator;
+export default GeneratorView;

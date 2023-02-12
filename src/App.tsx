@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Route, Routes } from 'react-router-dom';
 import ApplicationsList from './pages/Applications/List';
-import { DevPlayground } from './pages/DevPlayground/DevPlayground';
+import DevPlayground from './pages/DevPlayground';
 import Generator from './pages/Generator';
-import { Layout } from './templates/Layout';
+import Layout from './templates/Layout';
 import ThemeWrapper from './templates/ThemeWrapper';
 
 const queryClient = new QueryClient();
