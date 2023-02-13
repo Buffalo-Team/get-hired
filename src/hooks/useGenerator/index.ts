@@ -31,7 +31,7 @@ const useGenerator = () => {
       companyName: getRandomArrayItem(COMPANIES),
       roleName: getRandomArrayItem(ROLES),
       status: getRandomArrayItem(STATUSES),
-      linkToOffer: 'www.google.pl',
+      linkToOffer: 'https://www.google.pl',
       salaryRange: {
         from: salaryFrom,
         to: salaryTo,
@@ -56,6 +56,7 @@ const useGenerator = () => {
   };
 
   return {
+    isGenerated,
     generateDatabase,
   };
 };

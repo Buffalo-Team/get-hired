@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-export default {
+export const styles = {
   dot: style({
     width: 6,
     height: 6,

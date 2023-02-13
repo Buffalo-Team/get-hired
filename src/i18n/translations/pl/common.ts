@@ -10,4 +10,7 @@ export default {
   clearUserData: 'Wyczyść dane użytkownika',
   numberOfDays_one: '{{count}} dzień',
   numberOfDays_other: '{{count}} dni',
+  loading: 'Ładowanie',
+  databaseGenerated: 'Baza danych została wygenerowana!',
+  nothingToShow: 'Brak danych do wyświetlenia...',
 } as const;
