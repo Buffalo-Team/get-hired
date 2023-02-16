@@ -9,6 +9,8 @@ import ThemeWrapper from './templates/ThemeWrapper';
 const queryClient = new QueryClient();
 
 const App = (): JSX.Element => {
+  console.log({ envVars: import.meta.env, DEV: import.meta.env.DEV });
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeWrapper>
