@@ -7,7 +7,7 @@ import ApplicationStatus from '~/components/ApplicationStatus';
 import Link from '~/components/Link/Link.view';
 import useI18n from '~/hooks/useI18n';
 
-interface Props {
+export interface Props {
   companyName: string;
   roleName: string;
   status: ApplicationStatusEnum;

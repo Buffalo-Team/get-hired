@@ -3,7 +3,7 @@ import { styles } from './ApplicationStatus.styles.css';
 import theme from '~/theme';
 import useI18n from '~/hooks/useI18n';
 
-interface Props {
+export interface Props {
   status: ApplicationStatusEnum;
 }
 
