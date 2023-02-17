@@ -2,7 +2,7 @@ import { styles } from './Text.styles.css';
 import classNames from 'classnames';
 import { ReactNode } from 'react';
 
-interface Props {
+export interface Props {
   children: ReactNode;
   variant?: keyof typeof styles.variant;
   className?: string;
