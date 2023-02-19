@@ -27,7 +27,8 @@ export const styles = {
     flexDirection: 'column',
     transform: 'translateY(calc(100% + 4px))',
     backgroundColor: theme.palette.neutral.base,
-    width: '100%',
+    minWidth: '100%',
+    width: 'max-content',
   }),
   option: style({
     userSelect: 'none',

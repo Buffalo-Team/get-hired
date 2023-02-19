@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { DBApplication, DBModelBase } from './database';
 
 export enum Collection {
@@ -39,4 +40,10 @@ export type Application = ModelBase &
 export enum Status {
   Success = 'success',
   Failure = 'failure',
+}
+
+export interface DropdownOption<T> {
+  display: ReactNode;
+  displaySelected?: ReactNode;
+  value: T;
 }

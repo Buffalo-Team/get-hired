@@ -1,25 +1,26 @@
-import { ReactNode } from 'react';
 import { styles } from './Dropdown.styles.css';
 import { ReactComponent as DownArrow } from '~/assets/icons/downArrow.svg';
 import { useToggle } from 'react-use';
 import classNames from 'classnames';
+import { DropdownOption } from '~/@types/common';
 
-export interface Props {
-  value: number | string;
-  options: {
-    display: ReactNode;
-    value: number | string;
-  }[];
+type Value = string;
+
+export interface Props<T extends Value = string> {
+  value: T;
+  options: DropdownOption<T>[];
+  onChange: (value: T) => void;
 }
 
-const Dropdown = ({ value, options }: Props) => {
-  const [isListOpen, toggleListOpen] = useToggle(true);
+// TODO generic?
+const Dropdown = ({ value, options, onChange }: Props) => {
+  const [isListOpen, toggleListOpen] = useToggle(false);
   const chosenOption = options.find((option) => option.value === value);
 
   return (
     <div className={styles.root}>
-      <div className={styles.mainDisplay} onClick={toggleListOpen}>
-        {chosenOption && chosenOption.display}
+      <div className={styles.mainDisplay} onClick={() => toggleListOpen()}>
+        {chosenOption && (chosenOption.displaySelected || chosenOption.display)}
         <DownArrow className={classNames(styles.arrow, { [styles.flipped]: isListOpen })} />
       </div>
       {isListOpen && (
@@ -27,6 +28,10 @@ const Dropdown = ({ value, options }: Props) => {
           {options.map((option) => (
             <div
               key={option.value}
+              onClick={() => {
+                onChange(option.value);
+                toggleListOpen();
+              }}
               className={classNames(styles.option, { [styles.selected]: option.value === value })}
             >
               {option.display}
