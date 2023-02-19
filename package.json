@@ -12,7 +12,8 @@
     "prettier:fix": "npm run prettier -- --write",
     "format": "npm run prettier:fix && npm run lint:fix",
     "ladle:build": "ladle build",
-    "ladle": "ladle preview"
+    "ladle:preview": "ladle preview",
+    "ladle": "ladle serve"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
