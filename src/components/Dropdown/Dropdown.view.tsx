@@ -1,8 +1,9 @@
 import { styles } from './Dropdown.styles.css';
 import { ReactComponent as DownArrow } from '~/assets/icons/downArrow.svg';
-import { useToggle } from 'react-use';
+import { useClickAway, useToggle } from 'react-use';
 import classNames from 'classnames';
 import { DropdownOption } from '~/@types/common';
+import { useRef } from 'react';
 
 type Value = string | number;
 
@@ -14,6 +15,9 @@ export interface Props<T> {
 
 const Dropdown = <T extends Value = string>({ value, options, onChange }: Props<T>) => {
   const [isListOpen, toggleListOpen] = useToggle(false);
+  const ref = useRef(null);
+  useClickAway(ref, toggleListOpen);
+
   const chosenOption = options.find((option) => option.value === value);
 
   return (
@@ -23,7 +27,7 @@ const Dropdown = <T extends Value = string>({ value, options, onChange }: Props<
         <DownArrow className={classNames(styles.arrow, { [styles.flipped]: isListOpen })} />
       </div>
       {isListOpen && (
-        <div className={styles.list}>
+        <div ref={ref} className={styles.list}>
           {options.map((option) => (
             <div
               key={option.value}
