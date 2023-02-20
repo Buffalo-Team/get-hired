@@ -16,7 +16,11 @@ export interface Props<T> {
 const Dropdown = <T extends Value = string>({ value, options, onChange }: Props<T>) => {
   const [isListOpen, toggleListOpen] = useToggle(false);
   const ref = useRef(null);
-  useClickAway(ref, toggleListOpen);
+  useClickAway(ref, () => {
+    if (isListOpen) {
+      toggleListOpen();
+    }
+  });
 
   const chosenOption = options.find((option) => option.value === value);
 
