@@ -6,7 +6,12 @@ export const styles = {
     alignItems: 'center',
     columnGap: 6,
     height: 24,
+  }),
+  rightSpacing: style({
     paddingRight: 10,
+  }),
+  leftSpacing: style({
+    paddingLeft: 7,
   }),
   aside: style({
     width: 1,

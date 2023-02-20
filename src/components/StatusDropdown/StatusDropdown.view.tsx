@@ -13,7 +13,7 @@ const StatusDropdown = ({ value, statuses, onChange }: Props) => {
       statuses.map(
         (status): DropdownOption<ApplicationStatus> => ({
           value: status,
-          display: <StatusOption status={status} withAside />,
+          display: <StatusOption status={status} withAside withRightSpacing />,
           displaySelected: <StatusOption status={status} />,
         }),
       ),

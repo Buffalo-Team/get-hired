@@ -4,16 +4,15 @@ import { useToggle } from 'react-use';
 import classNames from 'classnames';
 import { DropdownOption } from '~/@types/common';
 
-type Value = string;
+type Value = string | number;
 
-export interface Props<T extends Value = string> {
+export interface Props<T> {
   value: T;
   options: DropdownOption<T>[];
   onChange: (value: T) => void;
 }
 
-// TODO generic?
-const Dropdown = ({ value, options, onChange }: Props) => {
+const Dropdown = <T extends Value = string>({ value, options, onChange }: Props<T>) => {
   const [isListOpen, toggleListOpen] = useToggle(false);
   const chosenOption = options.find((option) => option.value === value);
 
