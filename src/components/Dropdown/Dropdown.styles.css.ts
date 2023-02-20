@@ -29,6 +29,7 @@ export const styles = {
     backgroundColor: theme.palette.neutral.base,
     minWidth: '100%',
     width: 'max-content',
+    zIndex: 1,
   }),
   option: style({
     userSelect: 'none',
