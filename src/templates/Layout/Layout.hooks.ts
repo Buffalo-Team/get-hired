@@ -34,16 +34,16 @@ export const useRouteTitle = (): string | undefined => {
 export const useDynamicTopbar = (): boolean => {
   const { y } = useWindowScroll();
   const lastScrollY = useRef(y);
-  const [isTopbarDisplayed, toggleTopbarDisplayed] = useToggle(true);
+  const [isTopbarVisible, toggleTopbarVisible] = useToggle(true);
 
   useEffect(() => {
     if (y > lastScrollY.current) {
-      if (isTopbarDisplayed) {
-        toggleTopbarDisplayed();
+      if (isTopbarVisible) {
+        toggleTopbarVisible();
       }
     } else {
-      if (!isTopbarDisplayed) {
-        toggleTopbarDisplayed();
+      if (!isTopbarVisible) {
+        toggleTopbarVisible();
       }
     }
 
@@ -51,5 +51,5 @@ export const useDynamicTopbar = (): boolean => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [y]);
 
-  return isTopbarDisplayed;
+  return isTopbarVisible;
 };
