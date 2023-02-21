@@ -6,14 +6,12 @@ interface Props {
   pageIcons: PageIconConfig[];
 }
 
-const BottomPanelView = ({ pageIcons }: Props): JSX.Element => {
-  return (
-    <nav className={styles.bottomPanel}>
-      {pageIcons.map(({ id, label, Icon, onClick }) => (
-        <PageIcon key={id} label={label} Icon={Icon} onClick={onClick} />
-      ))}
-    </nav>
-  );
-};
+const BottomPanelView = ({ pageIcons }: Props): JSX.Element => (
+  <nav className={styles.bottomPanel}>
+    {pageIcons.map(({ id, label, Icon, onClick }) => (
+      <PageIcon key={id} label={label} Icon={Icon} onClick={onClick} />
+    ))}
+  </nav>
+);
 
 export default BottomPanelView;
