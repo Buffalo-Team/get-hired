@@ -3,7 +3,7 @@ import { ReactComponent as DownArrow } from '~/assets/icons/downArrow.svg';
 import { useClickAway, useToggle } from 'react-use';
 import classNames from 'classnames';
 import { DropdownOption } from '~/@types/common';
-import { useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 
 type Value = string | number;
 
@@ -11,9 +11,15 @@ export interface Props<T> {
   value: T;
   options: DropdownOption<T>[];
   onChange: (value: T) => void;
+  displaySelected?: (value: T) => ReactNode;
 }
 
-const Dropdown = <T extends Value = string>({ value, options, onChange }: Props<T>) => {
+const Dropdown = <T extends Value = string>({
+  value,
+  options,
+  onChange,
+  displaySelected,
+}: Props<T>) => {
   const [isListOpen, toggleListOpen] = useToggle(false);
   const ref = useRef(null);
   useClickAway(ref, () => {
@@ -24,10 +30,12 @@ const Dropdown = <T extends Value = string>({ value, options, onChange }: Props<
 
   const chosenOption = options.find((option) => option.value === value);
 
+  const chosenOptionView = displaySelected ? displaySelected(value) : chosenOption?.display;
+
   return (
     <div className={styles.root}>
       <div className={styles.mainDisplay} onClick={() => toggleListOpen()}>
-        {chosenOption && (chosenOption.displaySelected || chosenOption.display)}
+        {chosenOption && chosenOptionView}
         <DownArrow className={classNames(styles.arrow, { [styles.flipped]: isListOpen })} />
       </div>
       {isListOpen && (

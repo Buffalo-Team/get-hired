@@ -14,13 +14,19 @@ const StatusDropdown = ({ value, statuses, onChange }: Props) => {
         (status): DropdownOption<ApplicationStatus> => ({
           value: status,
           display: <StatusOption status={status} withAside withRightSpacing />,
-          displaySelected: <StatusOption status={status} />,
         }),
       ),
     [statuses],
   );
 
-  return <Dropdown onChange={onChange} value={value} options={styledOptions} />;
+  return (
+    <Dropdown
+      onChange={onChange}
+      value={value}
+      options={styledOptions}
+      displaySelected={(value) => <StatusOption status={value} />}
+    />
+  );
 };
 
 export default StatusDropdown;

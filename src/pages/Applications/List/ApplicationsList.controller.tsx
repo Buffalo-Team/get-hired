@@ -1,16 +1,18 @@
 import { isEmpty } from 'lodash';
-import { useApplicationsQuery } from './ApplicationsList.queries';
+import { APPLICATIONS_LIST_QUERY_KEY, useApplicationsQuery } from './ApplicationsList.queries';
 import ApplicationsListView from './ApplicationsList.view';
 import EmptyState from '~/components/EmptyState';
 import Loader from '~/components/Loader';
 import { ApplicationStatus } from '~/@types/common';
 import useApplicationUpdateMutation from '~/queries/useApplicationUpdateMutation';
+import { useQueryClient } from '@tanstack/react-query';
 
 const ApplicationsListController = (): JSX.Element => {
-  const { data, isLoading, refetch } = useApplicationsQuery();
+  const queryClient = useQueryClient();
+  const { data, isLoading } = useApplicationsQuery();
   const { mutate: updateApplication } = useApplicationUpdateMutation({
     onSuccess: () => {
-      refetch();
+      queryClient.invalidateQueries({ queryKey: APPLICATIONS_LIST_QUERY_KEY });
     },
   });
 

@@ -44,6 +44,5 @@ export enum Status {
 
 export interface DropdownOption<T> {
   display: ReactNode;
-  displaySelected?: ReactNode;
   value: T;
 }
