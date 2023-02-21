@@ -13,7 +13,14 @@ export default {
   loading: 'Ładowanie',
   databaseGenerated: 'Baza danych została wygenerowana!',
   nothingToShow: 'Brak danych do wyświetlenia...',
-  navbarTitle: {
-    applicationsList: 'Lista aplikacji',
+  layout: {
+    title: {
+      applicationsList: 'Lista aplikacji',
+    },
+    menuLabel: {
+      home: 'Strona główna',
+      calendar: 'Kalendarz',
+      settings: 'Ustawienia',
+    },
   },
 } as const;
