@@ -23,7 +23,8 @@ export const useRouteTitle = (): string | undefined => {
         title: t('layout.title.applicationsList'),
       },
     ],
-    [t],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
 
   const matchedRoute = routes.find((entry) =>
@@ -81,7 +82,8 @@ export const usePageIcons = (): PageIconConfig[] => {
         onClick: () => navigate('/settings'),
       },
     ],
-    [t, navigate],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [navigate],
   );
 
   return pageIcons;
