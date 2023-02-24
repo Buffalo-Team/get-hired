@@ -2,15 +2,14 @@ import { style } from '@vanilla-extract/css';
 import theme from '~/theme';
 
 export const styles = {
-  root: style({
-    width: '100%',
-    height: '100%',
+  pageIcon: style({
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    rowGap: 1,
+    cursor: 'pointer',
   }),
-  mainArea: style({
-    backgroundColor: theme.palette.neutral.light,
-    padding: '10px 20px',
-    flex: 1,
+  label: style({
+    color: theme.palette.neutral.main,
   }),
 };

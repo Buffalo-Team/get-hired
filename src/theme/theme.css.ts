@@ -12,6 +12,7 @@ export const themeContract = createThemeContract({
       dark: null,
       main: null,
       light: null,
+      base: null,
     },
     status: {
       sent: null,
@@ -21,6 +22,9 @@ export const themeContract = createThemeContract({
       hired: null,
       archived: null,
     },
+  },
+  transition: {
+    quick: null,
   },
 });
 
@@ -36,6 +40,7 @@ export const lightTheme = createTheme(themeContract, {
       dark: '#303030',
       main: '#959595',
       light: '#EBEBEB',
+      base: '#FFFFFF',
     },
     status: {
       sent: '#9FB900',
@@ -45,6 +50,9 @@ export const lightTheme = createTheme(themeContract, {
       hired: '#004AB9',
       archived: '#000000',
     },
+  },
+  transition: {
+    quick: '0.2s',
   },
 });
 
@@ -63,6 +71,7 @@ export const darkTheme = createTheme(themeContract, {
       dark: MOCK_COLOR,
       main: MOCK_COLOR,
       light: MOCK_COLOR,
+      base: MOCK_COLOR,
     },
     status: {
       sent: '#9FB900',
@@ -72,6 +81,9 @@ export const darkTheme = createTheme(themeContract, {
       hired: '#004AB9',
       archived: '#000000',
     },
+  },
+  transition: {
+    quick: '0.2s',
   },
 });
 
