@@ -1,16 +1,21 @@
 import { Outlet } from 'react-router-dom';
-import useI18n from '~/hooks/useI18n';
+import BottomPanel from './BottomPanel';
+import { useDynamicTopbar, usePageIcons, useRouteTitle } from './Layout.hooks';
 import { styles } from './Layout.styles.css';
+import Topbar from './Topbar';
 
 const LayoutView = (): JSX.Element => {
-  const { t } = useI18n();
+  const title = useRouteTitle();
+  const isTopbarVisible = useDynamicTopbar();
+  const pageIcons = usePageIcons();
 
   return (
     <div className={styles.root}>
-      <h1>{t('welcomeText')}</h1>
+      <Topbar title={title} isVisible={isTopbarVisible} />
       <main className={styles.mainArea}>
         <Outlet />
       </main>
+      <BottomPanel pageIcons={pageIcons} />
     </div>
   );
 };

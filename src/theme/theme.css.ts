@@ -25,6 +25,9 @@ export const themeContract = createThemeContract({
       archived: null,
     },
   },
+  transition: {
+    quick: null,
+  },
 });
 
 export const lightTheme = createTheme(themeContract, {
@@ -52,6 +55,9 @@ export const lightTheme = createTheme(themeContract, {
       archived: '#000000',
     },
   },
+  transition: {
+    quick: '0.2s',
+  },
 });
 
 // this MOCK_COLOR is temporary - until the colors for dark theme are provided
@@ -71,7 +77,7 @@ export const darkTheme = createTheme(themeContract, {
       dark: MOCK_COLOR,
       main: MOCK_COLOR,
       light: MOCK_COLOR,
-      base: '#000000',
+      base: MOCK_COLOR,
     },
     status: {
       sent: '#9FB900',
@@ -81,6 +87,9 @@ export const darkTheme = createTheme(themeContract, {
       hired: '#004AB9',
       archived: '#000000',
     },
+  },
+  transition: {
+    quick: '0.2s',
   },
 });
 

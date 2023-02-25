@@ -13,4 +13,14 @@ export default {
   loading: 'Ładowanie',
   databaseGenerated: 'Baza danych została wygenerowana!',
   nothingToShow: 'Brak danych do wyświetlenia...',
+  layout: {
+    title: {
+      applicationsList: 'Lista aplikacji',
+    },
+    menuLabel: {
+      home: 'Strona główna',
+      calendar: 'Kalendarz',
+      settings: 'Ustawienia',
+    },
+  },
 } as const;

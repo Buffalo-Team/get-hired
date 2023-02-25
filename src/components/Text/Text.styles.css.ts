@@ -22,5 +22,9 @@ export const styles = {
       fontSize: 20,
       fontWeight: 400,
     }),
+    menu: style({
+      fontSize: 12,
+      fontWeight: 600,
+    }),
   },
 };
