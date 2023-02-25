@@ -14,6 +14,7 @@ export const themeContract = createThemeContract({
       light: null,
       base: null,
     },
+    error: null,
     status: {
       sent: null,
       inProgress: null,
@@ -42,6 +43,7 @@ export const lightTheme = createTheme(themeContract, {
       light: '#EBEBEB',
       base: '#FFFFFF',
     },
+    error: '#ff1f1f',
     status: {
       sent: '#9FB900',
       inProgress: '#2C98FC',
@@ -73,6 +75,7 @@ export const darkTheme = createTheme(themeContract, {
       light: MOCK_COLOR,
       base: MOCK_COLOR,
     },
+    error: MOCK_COLOR,
     status: {
       sent: '#9FB900',
       inProgress: '#2C98FC',
