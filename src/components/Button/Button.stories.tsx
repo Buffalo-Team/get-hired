@@ -14,6 +14,11 @@ Default.argTypes = {
     defaultValue: false,
     options: [true, false],
   },
+  variant: {
+    control: { type: 'radio' },
+    defaultValue: 'default',
+    options: ['default', 'neutral'],
+  },
   onClick: {
     action: 'Clicked',
   },

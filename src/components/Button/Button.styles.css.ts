@@ -4,8 +4,7 @@ import theme from '~/theme';
 export const styles = {
   button: style({
     border: 'none',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.neutral.base,
+    display: 'block',
     fontSize: 16,
     fontWeight: 500,
     height: 56,
@@ -13,12 +12,26 @@ export const styles = {
     borderRadius: 10,
     transition: theme.transition.quick,
     cursor: 'pointer',
-
-    ':hover': {
-      backgroundColor: theme.palette.primary.dark,
-    },
   }),
   fullWidth: style({
     width: '100%',
   }),
+  variant: {
+    default: style({
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.neutral.base,
+
+      ':hover': {
+        backgroundColor: theme.palette.primary.dark,
+      },
+    }),
+    neutral: style({
+      backgroundColor: theme.palette.neutral.light,
+      color: theme.palette.neutral.dark,
+
+      ':hover': {
+        backgroundColor: theme.palette.neutral.main,
+      },
+    }),
+  },
 };
