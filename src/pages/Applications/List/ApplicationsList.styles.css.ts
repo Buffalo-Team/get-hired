@@ -6,12 +6,6 @@ export const styles = {
     flexDirection: 'column',
     rowGap: 12,
   }),
-  // TODO remove temporary options styles
-  options: style({
-    width: '100%',
-    height: 20,
-    backgroundColor: 'pink',
-  }),
   list: style({
     display: 'flex',
     flexDirection: 'column',

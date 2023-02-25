@@ -10,32 +10,32 @@ const useDatabase = () => {
   const get = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
     filterFunction?: (entry: MODEL) => boolean,
-  ): MODEL[] => {
+  ): Promise<MODEL[]> => {
     const bareLocalStorageValue = localStorage.getItem(collection);
     const entries: DB_MODEL[] = bareLocalStorageValue ? JSON.parse(bareLocalStorageValue) : [];
 
     const mappedEntries = entries.map((entry) => mapEntry<MODEL, DB_MODEL>(collection, entry));
 
-    return filterFunction ? mappedEntries.filter(filterFunction) : mappedEntries;
+    return Promise.resolve(filterFunction ? mappedEntries.filter(filterFunction) : mappedEntries);
   };
 
-  const getById = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
+  const getById = async <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
     id: number,
-  ): MODEL | null => {
-    const entries = get<MODEL, DB_MODEL>(collection);
+  ): Promise<MODEL | null> => {
+    const entries = await get<MODEL, DB_MODEL>(collection);
 
-    return entries.find((entry) => entry.id === id) ?? null;
+    return Promise.resolve(entries.find((entry) => entry.id === id) ?? null);
   };
 
-  const insert = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
+  const insert = async <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
     payload: Omit<MODEL, keyof ModelBase>,
-  ): Status => {
+  ): Promise<Status> => {
     const freeID = Number(localStorage.getItem(FREE_ID_KEY) || 1);
     const payloadToInsert = { ...payload, id: freeID, createdAt: new Date() } as MODEL;
 
-    const entries = get<MODEL, DB_MODEL>(collection);
+    const entries = await get<MODEL, DB_MODEL>(collection);
 
     if (entries.length === 0) {
       localStorage.setItem(collection, JSON.stringify([payloadToInsert]));
@@ -46,33 +46,33 @@ const useDatabase = () => {
 
     localStorage.setItem(FREE_ID_KEY, `${freeID + 1}`);
 
-    return Status.Success;
+    return Promise.resolve(Status.Success);
   };
 
-  const removeById = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
+  const removeById = async <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
     id: number,
-  ): Status => {
-    const entries = get<MODEL, DB_MODEL>(collection);
+  ): Promise<Status> => {
+    const entries = await get<MODEL, DB_MODEL>(collection);
     const newEntries = entries.filter((entry) => entry.id !== id);
 
     localStorage.setItem(collection, JSON.stringify(newEntries));
 
-    return Status.Success;
+    return Promise.resolve(Status.Success);
   };
 
-  const updateById = <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
+  const updateById = async <MODEL extends ModelBase, DB_MODEL extends DBModelBase>(
     collection: Collection,
     id: number,
     payload: Partial<Omit<MODEL, keyof ModelBase>>,
-  ): MODEL => {
-    const entries = get<MODEL, DB_MODEL>(collection);
+  ): Promise<MODEL> => {
+    const entries = await get<MODEL, DB_MODEL>(collection);
     const index = entries.findIndex((entry) => entry.id === id);
     entries[index] = { ...entries[index], ...payload, updatedAt: new Date() };
 
     localStorage.setItem(collection, JSON.stringify(entries));
 
-    return entries[index];
+    return Promise.resolve(entries[index]);
   };
 
   const dropDatabase = () => {

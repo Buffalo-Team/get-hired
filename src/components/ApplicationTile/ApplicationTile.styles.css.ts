@@ -20,7 +20,7 @@ export const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.neutral.base,
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4,
     padding: 12,

@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Route, Routes } from 'react-router-dom';
 import ApplicationsList from './pages/Applications/List';
 import DevPlayground from './pages/DevPlayground';
@@ -9,8 +9,6 @@ import ThemeWrapper from './templates/ThemeWrapper';
 const queryClient = new QueryClient();
 
 const App = (): JSX.Element => {
-  console.log({ envVars: import.meta.env, DEV: import.meta.env.DEV });
-
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeWrapper>
