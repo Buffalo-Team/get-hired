@@ -9,6 +9,7 @@ export const styles = {
   description: style({
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'center',
     rowGap: 4,
   }),
   tip: style({
