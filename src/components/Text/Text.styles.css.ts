@@ -6,6 +6,10 @@ export const styles = {
     color: theme.palette.neutral.dark,
   }),
   variant: {
+    extraSmall: style({
+      fontSize: 10,
+      fontWeight: 400,
+    }),
     small: style({
       fontSize: 12,
       fontWeight: 400,
