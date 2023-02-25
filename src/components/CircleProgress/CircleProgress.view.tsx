@@ -3,16 +3,16 @@ import Text from '~/components/Text';
 import { styles } from './CircleProgress.styles.css';
 
 export interface Props {
-  percentage: number;
+  fraction: number;
   radius?: number;
   lineWidth?: number;
   text?: string;
 }
 
-const CircleProgress = ({ radius = 18, lineWidth = 2, percentage, text }: Props) => {
-  const normalizedRadius = radius - lineWidth * 2;
+const CircleProgress = ({ radius = 18, lineWidth = 2, fraction, text }: Props) => {
+  const normalizedRadius = radius - lineWidth / 2;
   const circumference = 2 * Math.PI * normalizedRadius;
-  const unfilledFraction = 1 - percentage / 100;
+  const unfilledFraction = 1 - fraction;
   const strokeDashoffset = circumference * unfilledFraction;
   const size = radius * 2;
 
