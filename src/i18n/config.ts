@@ -1,9 +1,9 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enCommon from './translations/en/common';
-import enApplications from './translations/en/applications';
-import plCommon from './translations/pl/common';
-import plApplications from './translations/pl/applications';
+import enCommon from './translations/common/en';
+import enApplications from './translations/applications/en';
+import plCommon from './translations/common/pl';
+import plApplications from './translations/applications/pl';
 
 export type Namespaces = 'translation' | 'applications';
 
