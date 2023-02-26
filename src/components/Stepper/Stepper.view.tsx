@@ -1,15 +1,12 @@
-import { ReactNode, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { styles } from './Stepper.styles.css';
 import StepperProgress from './StepperProgress';
 import useI18n from '../../hooks/useI18n';
 import Button from '~/components/Button';
+import { Step } from '~/@types/common';
 
 export type Props = {
-  steps: {
-    title: string;
-    content: ReactNode;
-    tip?: string;
-  }[];
+  steps: Step[];
   onConfirm: () => void;
   continueLabel?: string;
   backLabel?: string;
@@ -21,6 +18,12 @@ const Stepper = ({ steps, onConfirm, continueLabel, backLabel, confirmLabel }: P
   const [stepIndex, setStepIndex] = useState(0);
   const currentStep = steps[stepIndex];
 
+  const goStepBack = useCallback(() => setStepIndex((currentStep) => currentStep - 1), []);
+  const goStepForward = useCallback(() => setStepIndex((currentStep) => currentStep + 1), []);
+
+  const isLastStep = stepIndex === steps.length - 1;
+  const isFirstStep = stepIndex === 0;
+
   return (
     <div className={styles.root}>
       <StepperProgress
@@ -30,22 +33,18 @@ const Stepper = ({ steps, onConfirm, continueLabel, backLabel, confirmLabel }: P
         tip={currentStep.tip}
       />
       <div className={styles.content}>{currentStep.content}</div>
-      {stepIndex === steps.length - 1 && (
+      {isLastStep && (
         <Button onClick={onConfirm} fullWidth>
           {confirmLabel || t('confirm')}
         </Button>
       )}
-      {stepIndex < steps.length - 1 && (
-        <Button onClick={() => setStepIndex((currentStep) => currentStep + 1)} fullWidth>
+      {!isLastStep && (
+        <Button onClick={goStepForward} fullWidth>
           {continueLabel || t('continue')}
         </Button>
       )}
-      {stepIndex > 0 && (
-        <Button
-          onClick={() => setStepIndex((currentStep) => currentStep - 1)}
-          variant='neutral'
-          fullWidth
-        >
+      {!isFirstStep && (
+        <Button onClick={goStepBack} variant='neutral' fullWidth>
           {backLabel || t('back')}
         </Button>
       )}

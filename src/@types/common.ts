@@ -46,3 +46,9 @@ export interface DropdownOption<T> {
   display: ReactNode;
   value: T;
 }
+
+export interface Step {
+  title: string;
+  content: ReactNode;
+  tip?: string;
+}
