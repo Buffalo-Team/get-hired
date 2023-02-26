@@ -23,4 +23,7 @@ export default {
       settings: 'Ustawienia',
     },
   },
+  continue: 'Kontynuuj',
+  back: 'Wstecz',
+  confirm: 'Zatwierdź',
 } as const;
