@@ -1,4 +1,5 @@
 import { IconButton } from '@mui/material';
+import classNames from 'classnames';
 import { ChangeEvent, useCallback, useState } from 'react';
 import { ReactComponent as CancelIcon } from '~/assets/icons/cancel.svg';
 import { styles } from './TextInput.styles.css';
@@ -8,6 +9,7 @@ import { transform } from './TextInput.utils';
 export type Props = {
   label: string;
   required?: boolean;
+  error?: boolean;
   defaultValue?: string;
   placeholder?: string;
   onChange: (value: TextInputValue) => void;
@@ -17,6 +19,7 @@ const TextInput = ({
   defaultValue,
   label,
   required,
+  error,
   placeholder = '',
   onChange,
 }: Props): JSX.Element => {
@@ -39,7 +42,11 @@ const TextInput = ({
   const formattedLabel = `${label}${required ? '*' : ''}`;
 
   return (
-    <div className={styles.textInputContainer}>
+    <div
+      className={classNames(styles.textInputContainer.base, {
+        [styles.textInputContainer.error]: error,
+      })}
+    >
       <IconButton className={styles.cancelButton} onClick={handleClear}>
         <CancelIcon />
       </IconButton>

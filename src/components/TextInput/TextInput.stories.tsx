@@ -3,7 +3,7 @@ import Component from '.';
 import { TextInputValue } from './TextInput.types';
 import { Props } from './TextInput.view';
 
-export const Default: Story<Props> = ({ label, required, placeholder }) => {
+export const Default: Story<Props> = ({ label, required, error, placeholder }) => {
   const handleOnChange = (value: TextInputValue) => {
     console.log(value);
   };
@@ -11,6 +11,7 @@ export const Default: Story<Props> = ({ label, required, placeholder }) => {
     <Component
       label={label}
       required={required}
+      error={error}
       placeholder={placeholder}
       onChange={handleOnChange}
     />
@@ -21,4 +22,5 @@ Default.args = {
   label: 'Label',
   required: true,
   placeholder: 'Start typing text...',
+  error: false,
 };

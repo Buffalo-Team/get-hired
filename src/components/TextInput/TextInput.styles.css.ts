@@ -14,6 +14,10 @@ const textInputContainer = style({
   },
 });
 
+const textInputContainerError = style({
+  borderColor: theme.palette.error,
+});
+
 const cancelButton = style({
   /* @ts-ignore-line */
   position: 'absolute !important',
@@ -53,7 +57,10 @@ const label = style({
 });
 
 export const styles = {
-  textInputContainer,
+  textInputContainer: {
+    base: textInputContainer,
+    error: textInputContainerError,
+  },
   label,
   input,
   cancelButton,
