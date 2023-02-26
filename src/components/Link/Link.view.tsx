@@ -1,21 +1,17 @@
 import Text from '~/components/Text';
-import useI18n from '~/hooks/useI18n';
 import { styles } from './Link.styles.css';
 
 interface Props {
   href: string;
+  label: string;
 }
 
-const Link = ({ href }: Props) => {
-  const { t } = useI18n('applications');
-
-  return (
-    <a href={href}>
-      <Text variant='small' className={styles.link}>
-        {t('linkToOffer')}
-      </Text>
-    </a>
-  );
-};
+const Link = ({ href, label }: Props) => (
+  <a href={href} target='_blank' rel='noreferrer'>
+    <Text variant='small' className={styles.link}>
+      {label}
+    </Text>
+  </a>
+);
 
 export default Link;
