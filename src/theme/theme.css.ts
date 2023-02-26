@@ -3,6 +3,7 @@ import { createTheme, createThemeContract } from '@vanilla-extract/css';
 export const themeContract = createThemeContract({
   palette: {
     primary: {
+      dark: null,
       main: null,
       light: null,
       ultraLight: null,
@@ -16,6 +17,7 @@ export const themeContract = createThemeContract({
       light: null,
       base: null,
     },
+    error: null,
     status: {
       sent: null,
       inProgress: null,
@@ -33,6 +35,7 @@ export const themeContract = createThemeContract({
 export const lightTheme = createTheme(themeContract, {
   palette: {
     primary: {
+      dark: '#006CCF',
       main: '#2C98FC',
       light: '#E7EDFF',
       ultraLight: '#F1F6FF',
@@ -46,6 +49,7 @@ export const lightTheme = createTheme(themeContract, {
       light: '#EBEBEB',
       base: '#FFFFFF',
     },
+    error: '#ff1f1f',
     status: {
       sent: '#9FB900',
       inProgress: '#2C98FC',
@@ -66,6 +70,7 @@ const MOCK_COLOR = '#FF00FF';
 export const darkTheme = createTheme(themeContract, {
   palette: {
     primary: {
+      dark: MOCK_COLOR,
       main: MOCK_COLOR,
       light: MOCK_COLOR,
       ultraLight: MOCK_COLOR,
@@ -79,6 +84,7 @@ export const darkTheme = createTheme(themeContract, {
       light: MOCK_COLOR,
       base: MOCK_COLOR,
     },
+    error: MOCK_COLOR,
     status: {
       sent: '#9FB900',
       inProgress: '#2C98FC',

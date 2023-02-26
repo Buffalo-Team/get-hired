@@ -4,6 +4,8 @@ import ApplicationTile from '../../components/ApplicationTile';
 import useTheme from '~/hooks/useTheme';
 import useI18n from '~/hooks/useI18n';
 import { ApplicationStatus } from '~/@types/common';
+import { values } from 'lodash';
+import Stepper from '~/components/Stepper';
 
 const DevPlaygroundView = (): JSX.Element => {
   const { toggleTheme, mode } = useTheme();
@@ -19,9 +21,9 @@ const DevPlaygroundView = (): JSX.Element => {
   };
 
   return (
-    <div style={{ background: '#ededed' }}>
+    <div style={{ background: 'white' }}>
       <h1>{t('devPlayground')}</h1>
-      <div style={{ padding: 20 }}>
+      <div style={{ padding: 20, background: '#ededed' }}>
         <ApplicationTile
           companyName='Super Company'
           roleName='Frontend Developer'
@@ -31,6 +33,8 @@ const DevPlaygroundView = (): JSX.Element => {
             to: 20,
           }}
           linkToOffer=''
+          availableStatuses={values(ApplicationStatus)}
+          onStatusChange={() => null}
           createdAt={new Date('2023-02-05T20:02:28.228Z')}
         />
         <ApplicationTile
@@ -42,6 +46,8 @@ const DevPlaygroundView = (): JSX.Element => {
             to: 6,
           }}
           linkToOffer=''
+          availableStatuses={values(ApplicationStatus)}
+          onStatusChange={() => null}
           createdAt={new Date('2023-01-05T20:02:28.228Z')}
         />
       </div>
@@ -64,7 +70,29 @@ const DevPlaygroundView = (): JSX.Element => {
         <button onClick={clearUserData}>{t('clearUserData')}</button>
         {JSON.stringify(user)}
       </div>
-      <div>{t('helloWorld')}</div>
+      <div style={{ marginTop: 20, padding: 10, height: 400 }}>
+        <Stepper
+          steps={[
+            {
+              title: 'Details',
+              tip: 'Next: Status',
+              content: 'Details Step Content',
+            },
+            {
+              title: 'Status',
+              tip: 'Next: Summary',
+              content: 'Status Step Content',
+            },
+            {
+              title: 'Summary',
+              content: 'Summary Step Content',
+            },
+          ]}
+          onConfirm={() => {
+            console.log('Confirm');
+          }}
+        />
+      </div>
     </div>
   );
 };
