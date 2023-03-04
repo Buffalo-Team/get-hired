@@ -51,7 +51,7 @@ const ApplicationTile = ({
           </Text>
         </div>
         <div className={styles.row}>
-          <Link href={linkToOffer} />
+          <Link href={linkToOffer} label={t('linkToOffer')} />
           <Text variant='small'>{getFormattedTimeDifference(t, createdAt)}</Text>
         </div>
       </main>
