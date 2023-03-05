@@ -1,39 +1,36 @@
 import { IconButton } from '@mui/material';
 import classNames from 'classnames';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback } from 'react';
+import { Control, Controller, FieldError, FieldValues, Path } from 'react-hook-form';
 import { ReactComponent as CancelIcon } from '~/assets/icons/cancel.svg';
 import { styles } from './TextInput.styles.css';
 import { TextInputValue } from './TextInput.types';
 import { transform } from './TextInput.utils';
 
 export type Props = {
+  value: TextInputValue;
   label: string;
   required?: boolean;
   error?: boolean;
-  defaultValue?: string;
   placeholder?: string;
   onChange: (value: TextInputValue) => void;
 };
 
 const TextInput = ({
-  defaultValue,
   label,
   required,
   error,
   placeholder = '',
   onChange,
+  value,
 }: Props): JSX.Element => {
-  const [value, setValue] = useState<TextInputValue>(defaultValue ?? '');
-
   const handleClear = useCallback(() => {
-    setValue(null);
     onChange(null);
   }, [onChange]);
 
   const handleOnChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>): void => {
       const transformedValue = transform.output(event);
-      setValue(transformedValue);
       onChange(transformedValue);
     },
     [onChange],
@@ -61,6 +58,35 @@ const TextInput = ({
         {formattedLabel}
       </label>
     </div>
+  );
+};
+
+export type ControlledTextInputProps<FORM_VALUES extends FieldValues> = {
+  label: string;
+  required?: boolean;
+  control: Control<FORM_VALUES>;
+  name: Path<FORM_VALUES>;
+  error: FieldError | undefined;
+};
+
+export const ControlledTextInput = <FORM_VALUES extends FieldValues>({
+  label,
+  name,
+  required,
+  control,
+  error,
+}: ControlledTextInputProps<FORM_VALUES>) => {
+  return (
+    <Controller<FORM_VALUES>
+      name={name}
+      control={control}
+      rules={{
+        required: Boolean(required),
+      }}
+      render={({ field }) => (
+        <TextInput label={label} error={error !== undefined} required={required} {...field} />
+      )}
+    />
   );
 };
 
